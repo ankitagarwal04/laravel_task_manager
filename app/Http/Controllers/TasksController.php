@@ -18,7 +18,7 @@ class TasksController extends Controller
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('store');
         
     }
 
@@ -29,7 +29,8 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
+        $userId = Auth::id();
+        $tasks = Task::where('user_id', $userId)->get();
         return view('tasks.index', compact('tasks'));
     }
 

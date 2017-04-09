@@ -8,10 +8,10 @@
                 <div class="panel-heading">Edit {{$task->id}}</div>
 
                 <div class="panel-body">
-                       <form action="/tasks/{{$task->id}}" method="put">
-                      {{ csrf_field() }}
-                      <input type="text" name="content" value="{{$task->content}}">
-                      <input type="submit" value="Edit Task" class="ui submit button">
+                       <form action="/tasks/{{$task->id}}/update" method="post">
+                          {{ csrf_field() }}
+                          <input type="text" name="content" value="{{$task->content}}">
+                          <input type="submit" value="Edit Task" class="ui submit button">
                     </form>         
 
                 </div>
