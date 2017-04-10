@@ -32,7 +32,7 @@
 							
 			         	</td>
 			         	<td>
-			         		<a href="/tasks/{{$task['id']}}/edit">Edit</a> /
+			         		<a href="tasks/{{$task->id}}/edit">Edit</a> /
 			         		<a href="tasks/{{$task->id}}/destroy" onclick="alert('Delete Successfull')">Delete
 			         		</a>
 			         	</td>
