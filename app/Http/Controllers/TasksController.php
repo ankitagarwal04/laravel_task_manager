@@ -25,10 +25,10 @@ class TasksController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return view('tasks.index')
      */
     public function index()
-    {   /*this render the path to the view/tasks.index directory*/
+    {   
         $userId = Auth::id();
         $tasks = Task::where('user_id', $userId)->get();
         return view('tasks.index', compact('tasks'));
@@ -37,10 +37,10 @@ class TasksController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return view('tasks.create')
      */
     public function create()
-    {   /*this render the path to the view/tasks.create directory*/
+    {   
         return view('tasks.create');
     }
 
@@ -48,10 +48,10 @@ class TasksController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return redirect('/tasks')
      */
     public function store(Request $request)
-    {   /*through request values are fetched and this function is storing those values into the database*/
+    {   
         $content = $request->input('content');
         $cStatus = 0;
         $pStatus = 0;
@@ -77,25 +77,15 @@ class TasksController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Task $task)
-    {
-        //
-    }
-
+  
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Task  $task
-     * @return \Illuminate\Http\Response
+     * @param  \App\Task  $id
+     * @return view('tasks.edit')
      */
     public function edit($id)
-    {   /*this render the path to the view/tasks.edit directory*/
+    {   
         $task = Task::find($id);
         return view('tasks.edit', compact('task'));
     }
@@ -104,11 +94,11 @@ class TasksController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Task  $task
-     * @return \Illuminate\Http\Response
+     * @param  \App\Task  $id
+     * @return redirect('tasks')
      */
     public function update(Request $request, $id)
-    {   /*through request values are fetched and this function is updating those values into the database*/
+    {   
         $content = $request->input('content');
         $cStatus = 0;
         $pStatus = 0;
@@ -137,11 +127,11 @@ class TasksController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Task  $task
-     * @return \Illuminate\Http\Response
+     * @param  \App\Task  $id
+     * @return redirect('tasks')
      */
     public function destroy($id)
-    {   /*it is deleting the tasks with id as $id*/
+    {   
         Task::destroy($id);
         return redirect('tasks');
     }
