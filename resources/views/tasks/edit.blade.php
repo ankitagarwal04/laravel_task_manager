@@ -10,7 +10,14 @@
                 <div class="panel-body">
                        <form action="/tasks/{{$task->id}}/update" method="post">
                           {{ csrf_field() }}
-                          <input type="text" name="content" value="{{$task->content}}">
+                          Task Name: <input type="text" name="content" value="{{$task->content}}">
+                          <br>
+                          Status: <select name="taskStatus">
+                            <option value="ongoing">Ongoing</option>
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                          </select>
+
                           <input type="submit" value="Edit Task" class="ui submit button">
                     </form>         
 

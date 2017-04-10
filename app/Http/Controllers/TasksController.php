@@ -18,7 +18,7 @@ class TasksController extends Controller
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth')->except('store');
+        $this->middleware('auth');
         
     }
 
@@ -53,10 +53,25 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         $content = $request->input('content');
+        $cStatus = 0;
+        $pStatus = 0;
+        $oStatus = 0;
+        $taskStatus = $request->input('taskStatus');
+        if ($taskStatus == "completed") {
+            $cStatus = 1;
+        } elseif ($taskStatus == "pending") {
+            $pStatus = 1;
+        } else {
+            $oStatus = 1;
+        }
+        
         $userId = Auth::id();
         $task = new Task;
         $task->content = $content;
         $task->user_id = $userId;
+        $task->ongoing = $oStatus;
+        $task->pending = $pStatus;
+        $task->completed = $cStatus;
         $task->save();
         return redirect('/tasks');
 
@@ -95,9 +110,25 @@ class TasksController extends Controller
     public function update(Request $request, $id)
     {
         $content = $request->input('content');
+        $cStatus = 0;
+        $pStatus = 0;
+        $oStatus = 0;
+        $taskStatus = $request->input('taskStatus');
+        if ($taskStatus == "completed") {
+            $cStatus = 1;
+        } elseif ($taskStatus == "pending") {
+            $pStatus = 1;
+        } else {
+            $oStatus = 1;
+        }
+        
 
         $task = Task::find($id);
         $task->content = $content;
+        $task->ongoing = $oStatus;
+        $task->pending = $pStatus;
+        $task->completed = $cStatus;
+
         $task->save();
         return redirect('tasks')->with('message', "successfully updated");
 

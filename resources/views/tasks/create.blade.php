@@ -14,6 +14,11 @@
                           
                         </textarea>
                         <br/>
+                         Status: <select name="taskStatus">
+                            <option value="ongoing">Ongoing</option>
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                          </select>
                         <input type="submit">
                   </form>
                 

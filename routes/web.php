@@ -21,5 +21,4 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('tasks', 'TasksController');
 Route::get('/tasks/{id}/destroy', 'TasksController@destroy');
-Route::get('/tasks/{id}/edit', 'TasksController@edit');
 Route::post('/tasks/{id}/update', 'TasksController@update');
