@@ -1,10 +1,11 @@
+{{-- layout of the page is created --}}	
 	@extends('layouts.app')
 
 	@section('content')
 		<div class="container">
 		<div class="row">
 		    <div class="col-md-8 col-md-offset-2">
-
+		 {{-- to add a new task --}}
 		 <a href="/tasks/create">Create New One</a>   	
 		<div class="table-responsive">
 		<table class="table table-striped table-bordered table-hover">
@@ -32,6 +33,7 @@
 							
 			         	</td>
 			         	<td>
+			         		{{-- links to edit and delete --}}
 			         		<a href="tasks/{{$task->id}}/edit">Edit</a> /
 			         		<a href="tasks/{{$task->id}}/destroy" onclick="alert('Delete Successfull')">Delete
 			         		</a>

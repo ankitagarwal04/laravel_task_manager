@@ -16,9 +16,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+// after login, this route will be followed
 Route::get('/home', 'HomeController@index');
 
 Route::resource('tasks', 'TasksController');
+
 Route::get('/tasks/{id}/destroy', 'TasksController@destroy');
+
 Route::post('/tasks/{id}/update', 'TasksController@update');

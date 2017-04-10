@@ -1,3 +1,4 @@
+{{-- layout of the page is created --}} 
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
     <head>

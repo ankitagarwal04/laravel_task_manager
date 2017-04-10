@@ -1,3 +1,4 @@
+{{-- layout of the page is created --}} 
 @extends('layouts.app')
 
 @section('content')

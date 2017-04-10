@@ -28,7 +28,7 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   /*this render the path to the view/tasks.index directory*/
         $userId = Auth::id();
         $tasks = Task::where('user_id', $userId)->get();
         return view('tasks.index', compact('tasks'));
@@ -40,7 +40,7 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   /*this render the path to the view/tasks.create directory*/
         return view('tasks.create');
     }
 
@@ -51,7 +51,7 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   /*through request values are fetched and this function is storing those values into the database*/
         $content = $request->input('content');
         $cStatus = 0;
         $pStatus = 0;
@@ -95,7 +95,7 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   /*this render the path to the view/tasks.edit directory*/
         $task = Task::find($id);
         return view('tasks.edit', compact('task'));
     }
@@ -108,7 +108,7 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   /*through request values are fetched and this function is updating those values into the database*/
         $content = $request->input('content');
         $cStatus = 0;
         $pStatus = 0;
@@ -141,7 +141,7 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   /*it is deleting the tasks with id as $id*/
         Task::destroy($id);
         return redirect('tasks');
     }
